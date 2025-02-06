@@ -1,6 +1,10 @@
 [core]
     remote = s3storage
+[cache]
+    dir = ../.dvccache
 ['remote "myremote"']
     url = ../profiles
 ['remote "s3storage"']
     url = s3://cellpainting-gallery/cpg0014-jump-adipocyte/broad/workspace/software/profiles_DVC
+    acl = bucket-owner-full-control
+    profile = cpg-access-role
