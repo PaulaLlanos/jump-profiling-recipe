@@ -41,18 +41,28 @@ I create the environment using nix, you can check flake files to see te requirem
 cd jump-profiling-recipe/
 nix develop . --impure --extra-experimental-features nix-command --extra-experimental-features flakes --show-trace
 ```
+# Run SnakeMake file
 
-# To check phenotipic activity calculating mAP
+To run SnakeMake run the following command, the path need to point out to orf.json files
+
+snakemake -c1 --configfile inputs/orf.json
+
+it will generate an "outputs" folder, which will contain the profiles follorwing the ORF-recipe.
+
+# To assess phenotypic activity by calculating mAP
+
+Input: A file generated from a Snakemake step. Once executed, it produces multiple profile files, each reflecting the sequence of applied processing steps. The specific file used for further analysis is:
+
+profiles_wellpos_cc_var_mad_outlier_featselect_sphering_harmony
 
 output: 'map_scores.parquet'
 code: below
-
 
 ```
     from preprocessing import metrics
 
     # Get average precision
-    metrics.average_precision_negcon(parquet_path="outputs/orf/profiles_wellpos_cc_var_mad_outlier_featselect_sphering_harmony.parquet", ap_path="ap_scores.parquet", plate_types=["COMPOUND"])
+    metrics.average_precision_negcon(parquet_path="outputs/orf_adipocytes/profiles_wellpos_cc_var_mad_outlier_featselect_sphering_harmony.parquet", ap_path="ap_scores.parquet", plate_types=["COMPOUND"])
     # Get Mean average precision
     metrics.mean_average_precision("ap_scores.parquet", "map_scores.parquet")
 ```
