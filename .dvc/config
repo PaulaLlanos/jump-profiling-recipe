@@ -1,0 +1,8 @@
+[core]
+    remote = s3storage
+['remote "myremote"']
+    url = ../profiles
+['remote "s3storage"']
+    url = s3://cellpainting-gallery/cpg0014-jump-adipocyte/broad/workspace/software/profiles_DVC
+    profile = cpg-access
+    acl = bucket-owner-full-control
