@@ -1,0 +1,6 @@
+outs:
+- md5: a94c6b6927870893dd4a23e75ad0ba5f.dir
+  size: 12374319085
+  nfiles: 166
+  hash: md5
+  path: orf_adipocytes
